@@ -14,6 +14,10 @@
 		224487F61C205D34004C20D4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 224487F51C205D34004C20D4 /* Images.xcassets */; };
 		224487F91C205D34004C20D4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 224487F71C205D34004C20D4 /* LaunchScreen.xib */; };
 		224488051C205D34004C20D4 /* CloudNotesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224488041C205D34004C20D4 /* CloudNotesTests.swift */; };
+		2244880F1C205DCA004C20D4 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2244880E1C205DCA004C20D4 /* CoreDataHelper.swift */; };
+		224488131C20718B004C20D4 /* Notebook.m in Sources */ = {isa = PBXBuildFile; fileRef = 224488121C20718B004C20D4 /* Notebook.m */; };
+		224488161C20718B004C20D4 /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 224488151C20718B004C20D4 /* Note.m */; };
+		224488191C209B7A004C20D4 /* NotebookTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224488181C209B7A004C20D4 /* NotebookTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +42,13 @@
 		224487FE1C205D34004C20D4 /* CloudNotesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CloudNotesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		224488031C205D34004C20D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		224488041C205D34004C20D4 /* CloudNotesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudNotesTests.swift; sourceTree = "<group>"; };
+		2244880E1C205DCA004C20D4 /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
+		224488101C20718A004C20D4 /* CloudNotes-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CloudNotes-Bridging-Header.h"; sourceTree = "<group>"; };
+		224488111C20718B004C20D4 /* Notebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Notebook.h; sourceTree = "<group>"; };
+		224488121C20718B004C20D4 /* Notebook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Notebook.m; sourceTree = "<group>"; };
+		224488141C20718B004C20D4 /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note.h; sourceTree = "<group>"; };
+		224488151C20718B004C20D4 /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = "<group>"; };
+		224488181C209B7A004C20D4 /* NotebookTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotebookTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,13 +90,16 @@
 		224487E81C205D33004C20D4 /* CloudNotes */ = {
 			isa = PBXGroup;
 			children = (
+				2244880E1C205DCA004C20D4 /* CoreDataHelper.swift */,
 				224487EB1C205D33004C20D4 /* AppDelegate.swift */,
 				224487F01C205D34004C20D4 /* ViewController.swift */,
+				224488181C209B7A004C20D4 /* NotebookTableViewController.swift */,
 				224487F21C205D34004C20D4 /* Main.storyboard */,
 				224487F51C205D34004C20D4 /* Images.xcassets */,
 				224487F71C205D34004C20D4 /* LaunchScreen.xib */,
-				224487ED1C205D34004C20D4 /* CloudNotes.xcdatamodeld */,
+				224488171C20720B004C20D4 /* Datamodel */,
 				224487E91C205D33004C20D4 /* Supporting Files */,
+				224488101C20718A004C20D4 /* CloudNotes-Bridging-Header.h */,
 			);
 			path = CloudNotes;
 			sourceTree = "<group>";
@@ -113,6 +127,18 @@
 				224488031C205D34004C20D4 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		224488171C20720B004C20D4 /* Datamodel */ = {
+			isa = PBXGroup;
+			children = (
+				224487ED1C205D34004C20D4 /* CloudNotes.xcdatamodeld */,
+				224488141C20718B004C20D4 /* Note.h */,
+				224488151C20718B004C20D4 /* Note.m */,
+				224488111C20718B004C20D4 /* Notebook.h */,
+				224488121C20718B004C20D4 /* Notebook.m */,
+			);
+			name = Datamodel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -215,8 +241,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				224488131C20718B004C20D4 /* Notebook.m in Sources */,
 				224487F11C205D34004C20D4 /* ViewController.swift in Sources */,
 				224487EC1C205D33004C20D4 /* AppDelegate.swift in Sources */,
+				224488161C20718B004C20D4 /* Note.m in Sources */,
+				224488191C209B7A004C20D4 /* NotebookTableViewController.swift in Sources */,
+				2244880F1C205DCA004C20D4 /* CoreDataHelper.swift in Sources */,
 				224487EF1C205D34004C20D4 /* CloudNotes.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -346,9 +376,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = CloudNotes/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "CloudNotes/CloudNotes-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -356,9 +389,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = CloudNotes/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "CloudNotes/CloudNotes-Bridging-Header.h";
 			};
 			name = Release;
 		};
