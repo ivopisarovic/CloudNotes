@@ -185,6 +185,7 @@
 		224487DE1C205D33004C20D4 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = "Tim Pryor";
 				TargetAttributes = {
@@ -450,6 +451,7 @@
 				2244880A1C205D34004C20D4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2244880B1C205D34004C20D4 /* Build configuration list for PBXNativeTarget "CloudNotesTests" */ = {
 			isa = XCConfigurationList;
@@ -458,6 +460,7 @@
 				2244880D1C205D34004C20D4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
