@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		224487EC1C205D33004C20D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224487EB1C205D33004C20D4 /* AppDelegate.swift */; };
 		224487EF1C205D34004C20D4 /* CloudNotes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 224487ED1C205D34004C20D4 /* CloudNotes.xcdatamodeld */; };
-		224487F11C205D34004C20D4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224487F01C205D34004C20D4 /* ViewController.swift */; };
 		224487F41C205D34004C20D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 224487F21C205D34004C20D4 /* Main.storyboard */; };
 		224487F61C205D34004C20D4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 224487F51C205D34004C20D4 /* Images.xcassets */; };
 		224487F91C205D34004C20D4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 224487F71C205D34004C20D4 /* LaunchScreen.xib */; };
@@ -35,7 +34,6 @@
 		224487EA1C205D33004C20D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		224487EB1C205D33004C20D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		224487EE1C205D34004C20D4 /* CloudNotes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CloudNotes.xcdatamodel; sourceTree = "<group>"; };
-		224487F01C205D34004C20D4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		224487F31C205D34004C20D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		224487F51C205D34004C20D4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		224487F81C205D34004C20D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -49,6 +47,7 @@
 		224488141C20718B004C20D4 /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note.h; sourceTree = "<group>"; };
 		224488151C20718B004C20D4 /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = "<group>"; };
 		224488181C209B7A004C20D4 /* NotebookTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotebookTableViewController.swift; sourceTree = "<group>"; };
+		B4CAE9381D2038440051C686 /* CloudNotes.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = CloudNotes.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,9 +89,9 @@
 		224487E81C205D33004C20D4 /* CloudNotes */ = {
 			isa = PBXGroup;
 			children = (
+				B4CAE9381D2038440051C686 /* CloudNotes.entitlements */,
 				2244880E1C205DCA004C20D4 /* CoreDataHelper.swift */,
 				224487EB1C205D33004C20D4 /* AppDelegate.swift */,
-				224487F01C205D34004C20D4 /* ViewController.swift */,
 				224488181C209B7A004C20D4 /* NotebookTableViewController.swift */,
 				224487F21C205D34004C20D4 /* Main.storyboard */,
 				224487F51C205D34004C20D4 /* Images.xcassets */,
@@ -191,6 +190,12 @@
 				TargetAttributes = {
 					224487E51C205D33004C20D4 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = 8UAN795U56;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					224487FD1C205D34004C20D4 = {
 						CreatedOnToolsVersion = 6.4;
@@ -243,7 +248,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				224488131C20718B004C20D4 /* Notebook.m in Sources */,
-				224487F11C205D34004C20D4 /* ViewController.swift in Sources */,
 				224487EC1C205D33004C20D4 /* AppDelegate.swift in Sources */,
 				224488161C20718B004C20D4 /* Note.m in Sources */,
 				224488191C209B7A004C20D4 /* NotebookTableViewController.swift in Sources */,
@@ -378,9 +382,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = CloudNotes/CloudNotes.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = CloudNotes/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.CloudNotesMendelu2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "CloudNotes/CloudNotes-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -391,9 +400,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = CloudNotes/CloudNotes.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = CloudNotes/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.CloudNotesMendelu2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "CloudNotes/CloudNotes-Bridging-Header.h";
 			};
 			name = Release;

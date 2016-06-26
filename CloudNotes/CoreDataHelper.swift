@@ -14,7 +14,7 @@ class CoreDataHelper: NSObject {
     class func insertManagedObject(className:NSString, managedObjectContext:NSManagedObjectContext) -> AnyObject {
         let managedObject = NSEntityDescription.insertNewObjectForEntityForName(className as String, inManagedObjectContext: managedObjectContext) as! NSManagedObject
         
-        return managedObjectContext
+        return managedObject
     }
     
     class func fetchEntities (className:NSString, managedObjectContext:NSManagedObjectContext, predicate:NSPredicate?)->NSArray{
@@ -28,8 +28,13 @@ class CoreDataHelper: NSObject {
         
         fetchRequest.returnsObjectsAsFaults = false
         
-        let items = managedObjectContext.executeFetchRequest(fetchRequest, error: nil)
-        
+        var items:NSArray?
+        do{
+            items = try managedObjectContext.executeFetchRequest(fetchRequest)
+        }catch let error as NSError{
+            abort()
+        }
+            
         return items!
         
     }

@@ -20,6 +20,7 @@ class NotebookTableViewController: UITableViewController {
         
         self.navigationItem.title = "Waiting for iCloud"
         self.navigationItem.rightBarButtonItem?.enabled = false
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -89,13 +90,12 @@ class NotebookTableViewController: UITableViewController {
         // 41 min
             if self.moc.hasChanges {
                 var error: NSError? = nil
-                self.moc.save(&error)
-                if error != nil {
-                    println("Save error: \(error)")
-                    
-                } else {
-                    // drop any managed object references
+                do{
+                try self.moc.save()
+                }catch let error as NSError{
+                    print("Save error: \(error)")
                     self.moc.reset()
+                    abort()
                 }
             }
         }
@@ -109,23 +109,33 @@ class NotebookTableViewController: UITableViewController {
         }
     }
     
+    @IBAction func loadDataClick(sender: AnyObject) {
+        loadData()
+    }
     
     @IBAction func addNotebook(sender: AnyObject) {
         
         let addNotebookAlert = UIAlertController(title: "New Notebook", message: "Enter notebook title", preferredStyle: UIAlertControllerStyle.Alert)
         addNotebookAlert.addTextFieldWithConfigurationHandler(nil)
         addNotebookAlert.addAction(UIAlertAction(title: "Save Notebook", style: UIAlertActionStyle.Default, handler: { (alertAction:UIAlertAction!) -> Void in
-            let textField = addNotebookAlert.textFields?.last as! UITextField
-            if textField.text != "" {
+            let textField = addNotebookAlert.textFields?.last
+            if textField!.text != "" {
                 let notebook = CoreDataHelper.insertManagedObject(NSStringFromClass(Notebook), managedObjectContext: self.moc) as! Notebook
                 notebook.creationDate = NSDate()
-                self.moc.save(nil)
+                notebook.title = textField!.text!
+                do{
+                    try self.moc.save()
+                }catch let e as NSError{
+                    print("ERROR \(e)")
+                    abort()
+                }
                 // loadData()
             }
         }))
         
         addNotebookAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil))
 
+        presentViewController(addNotebookAlert, animated: true, completion: nil)
     }
     
     func loadData() {
@@ -154,6 +164,7 @@ class NotebookTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
+        NSLog("count is %@", String(notebookArray.count))
         return notebookArray.count
     }
 
